@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Handler.File.ArchiveHandler
+namespace HLib.File.ArchiveHandler
 {
     public interface IArchiveHandler : IDisposable
     {

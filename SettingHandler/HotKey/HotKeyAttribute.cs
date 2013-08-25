@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Handler.Settings.HotKey
+namespace HLib.Settings.HotKey
 {
 
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]

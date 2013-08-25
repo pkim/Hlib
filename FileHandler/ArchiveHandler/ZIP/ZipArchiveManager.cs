@@ -15,9 +15,9 @@ using System.IO.Packaging;
 using System.IO;
 using System.Net.Mime;
 using System.IO.Compression;
-using Handler.File.ArchiveHandler;
+using HLib.File.ArchiveHandler;
 
-namespace Handler.File.Archive.ZIP
+namespace HLib.File.Archive.ZIP
 {
     public class ZipArchiveManager : IArchiveHandler
     {
@@ -90,13 +90,13 @@ namespace Handler.File.Archive.ZIP
         private static void CopyStream(Stream source, Stream target)
         {
             // specify the buffer size
-            const int bufSize = 0x1000;
+            const Int32 bufSize = 0x1000;
 
             // initialize the buffer
             byte[] buf = new byte[bufSize];
 
             // initialize the help variable
-            int bytesRead = new Int32();
+            Int32 bytesRead = new Int32();
 
             // Copies data from a source stream to a target stream
             while ((bytesRead = source.Read(buf, 0, bufSize)) > 0)
@@ -122,7 +122,7 @@ namespace Handler.File.Archive.ZIP
                     using (Stream destination = System.IO.File.OpenWrite(target))
                     {
                         byte[] buffer = new byte[0x1000];
-                        int read;
+                        Int32 read;
 
                         while ((read = source.Read(buffer, 0, buffer.Length)) > 0)
                         {
@@ -133,7 +133,7 @@ namespace Handler.File.Archive.ZIP
             }
         }
 
-        private static string CreateFilenameFromUri(Uri _uri)
+        private static String CreateFilenameFromUri(Uri _uri)
         {
             String uri = _uri.OriginalString;
 

@@ -13,10 +13,10 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
-using Handler.Item.Reflection;
+using HLib.Item.Reflection;
 using System.Runtime.Serialization;
 
-namespace Handler.File.XML
+namespace HLib.File.XML
 {
     /// <summary>
     /// Includes methods to handle XML

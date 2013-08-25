@@ -8,7 +8,7 @@ using System.IO;
 using System.Security.AccessControl;
 using System.Diagnostics;
 
-namespace Handler.FileHandler
+namespace HLib.FileHandler
 {
     internal class CheckDirectory
     {
@@ -31,13 +31,13 @@ namespace Handler.FileHandler
         [return: MarshalAs(UnmanagedType.Bool)]
 
 
-        public static extern bool DuplicateToken(IntPtr ExistingTokenHandle,
+        public static extern Boolean DuplicateToken(IntPtr ExistingTokenHandle,
                 [MarshalAs(UnmanagedType.U4)] TokenImpersonationLevel level,
-                out int DuplicateTokenHandle);
+                out Int32 DuplicateTokenHandle);
 
         [DllImport("advapi32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool AccessCheck(
+        static extern Boolean AccessCheck(
             [MarshalAs(UnmanagedType.LPArray)]
         byte[] pSecurityDescriptor,
                 IntPtr ClientToken,
@@ -46,17 +46,17 @@ namespace Handler.FileHandler
         TokenAccessLevels accessmask,
               [In] ref GENERIC_MAPPING GenericMapping,
               IntPtr PrivilegeSet,
-              ref int PrivilegeSetLength,
+              ref Int32 PrivilegeSetLength,
               out uint GrantedAccess,
               [MarshalAs(UnmanagedType.Bool)]
-      out bool AccessStatus);
+      out Boolean AccessStatus);
 
         [DllImport("kernel32")]
         static extern void CloseHandle(IntPtr ptr);
 
         #endregion
 
-        internal static bool hasReadAccess(string path)
+        internal static Boolean hasReadAccess(String path)
         {
             // Obtain the authenticated user's Identity
             
@@ -64,7 +64,7 @@ namespace Handler.FileHandler
             WindowsIdentity winId = WindowsIdentity.GetCurrent(TokenAccessLevels.Duplicate | TokenAccessLevels.Query);
 
             WindowsImpersonationContext ctx = null;
-            int statError = new Int32();
+            Int32 statError = new Int32();
 
             IntPtr dupToken = IntPtr.Zero;
             try
@@ -72,7 +72,7 @@ namespace Handler.FileHandler
                 // Start impersonating
                 //ctx = winId.Impersonate(); works but AccessCheck does not like this
 
-                int outPtr;
+                Int32 outPtr;
                 //AccessCheck needs a duplicated token!
                 DuplicateToken(winId.Token, TokenImpersonationLevel.Impersonation, out outPtr);
 
@@ -87,9 +87,9 @@ namespace Handler.FileHandler
                 MapGenericMask(ref required, ref map);
 
                 uint status = new Int32();
-                bool accesStatus = false;
+                Boolean accesStatus = false;
                 // dummy area the size should be 20 we don't do anything with it
-                int sizeps = 20;
+                Int32 sizeps = 20;
                 IntPtr ps = Marshal.AllocCoTaskMem(sizeps);
 
                 //AccessControlSections.Owner | AccessControlSections.Group MUST be included,
@@ -98,7 +98,7 @@ namespace Handler.FileHandler
                     AccessControlSections.Access | AccessControlSections.Owner |
                         AccessControlSections.Group);
 
-                bool success = AccessCheck(ACE.GetSecurityDescriptorBinaryForm(), dupToken, required, ref map,
+                Boolean success = AccessCheck(ACE.GetSecurityDescriptorBinaryForm(), dupToken, required, ref map,
                         ps, ref sizeps, out status, out accesStatus);
                 Marshal.FreeCoTaskMem(ps);
                 if (!success)

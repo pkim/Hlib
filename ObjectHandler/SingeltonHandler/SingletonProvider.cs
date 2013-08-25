@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections;
 using System.Reflection;
 
-namespace Handler.Item.Singleton
+namespace HLib.Item.Singleton
 {
 
     /// <summary>
@@ -37,7 +37,7 @@ namespace Handler.Item.Singleton
         /// <typeparam name="T">dynamic Type of the singelton instance</typeparam>
         /// <param name="New">Contains the boolean value if the instance is new</param>
         /// <returns>The singelton object</returns>
-        public static T GetInstance<T>(out bool New)
+        public static T GetInstance<T>(out Boolean New)
           where T : class // Jede Klasse ist erlaubt
         {
             // If the class T has a public constructor
@@ -98,7 +98,7 @@ namespace Handler.Item.Singleton
         public static T GetInstance<T>()
           where T : class
         {
-            bool _Trash;
+            Boolean _Trash;
             return GetInstance<T>(out _Trash);
         }
 

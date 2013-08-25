@@ -1,5 +1,5 @@
 ﻿/*
- * Name: Handler.FileHandler
+ * Name: HLib.FileHandler
  * Date: 20 Februar 2011
  * Author: Patrik Kimmeswenger
  * Description: serves some methods to handle file and directory communication
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Handler.File.Text
+namespace HLib.File.Text
 {
     public static class TextFileManager
     {
@@ -24,7 +24,7 @@ namespace Handler.File.Text
         /// <param name="_destinationFilePath"> destination path where the file should be created</param>
         /// <param name="_text"> text which should be written into the file</param>
         ///</summary>
-        public static bool _write_TextFile(string _destinationFilePath, string _text)
+        public static Boolean _write_TextFile(String _destinationFilePath, String _text)
         {
             StreamWriter streamWriter = new StreamWriter(_destinationFilePath);
 
@@ -51,7 +51,7 @@ namespace Handler.File.Text
         /// <param name="_sourceFilePath"> source path where of the file</param>
         /// <param name="_text"> text which should be read from the file</param>
         ///</summary>
-        public static bool _read_TextFile(string _sourceFilePath, ref string _text)
+        public static Boolean _read_TextFile(String _sourceFilePath, ref String _text)
         {
             StreamReader streamReader;
 
@@ -84,7 +84,7 @@ namespace Handler.File.Text
         /// <param name="_sourceFilePath"> source path where of the file</param>
         /// <param name="_text"> text which should be read from the file</param>
         ///</summary>
-        public static string _read_TextFile(string _sourceFilePath)
+        public static String _read_TextFile(String _sourceFilePath)
         {
             StreamReader streamReader;
 
@@ -107,10 +107,10 @@ namespace Handler.File.Text
         }
 
 
-        public static string _ConvertToStringFilePath(string _filePath)
+        public static String _ConvertToStringFilePath(String _filePath)
         {
             char searchChar = '\\';
-            int index = new Int32();
+            Int32 index = new Int32();
 
             while((index = _filePath.IndexOf(searchChar, index)) != -1)
             {
@@ -129,10 +129,10 @@ namespace Handler.File.Text
         }
 
 
-        public static string _ConvertToNormalFilePath(string _filePath)
+        public static String _ConvertToNormalFilePath(String _filePath)
         {
-            string searchString = "\\\\";
-            int index = new Int32();
+            String searchString = "\\\\";
+            Int32 index = new Int32();
 
             
             while((index = _filePath.IndexOf(searchString, index)) != -1)
@@ -151,7 +151,7 @@ namespace Handler.File.Text
         /// <param name="_path">Pfad der Datei</param>
         /// <returns>Endung ohne Punkt</returns>
         /// </summary>
-        public static string _Extenstion(this String _path)
+        public static String _Extenstion(this String _path)
         {
             if (System.IO.File.Exists(_path))
                 return new FileInfo(_path).Extension.Substring(1);
@@ -185,7 +185,7 @@ namespace Handler.File.Text
         /// <param name="_path">Pfad zum Ordner</param>
         /// <param name="_recursiv">Unterordner auch dazu zählen</param>
         /// <returns>Ordnergröße</returns>
-        public static long _FolderSize(this String _path, bool _recursiv)
+        public static long _FolderSize(this String _path, Boolean _recursiv)
         {
             if (Directory.Exists(_path))
             {
@@ -313,7 +313,7 @@ namespace Handler.File.Text
         /// </summary>
         /// <param name="_path">Pfad</param>
         /// <returns>Übergeordneter Ordner</returns>
-        public static string _Directory(this String _path)
+        public static String _Directory(this String _path)
         {
             if (System.IO.File.Exists(_path))
                 return new FileInfo(_path).DirectoryName;
@@ -331,9 +331,9 @@ namespace Handler.File.Text
         /// </summary>
         /// <param name="_pfad">Pfad des Ordners</param>
         /// <returns>Liste</returns>
-        public static List<string> _ListFiles(this String _path)
+        public static List<String> _ListFiles(this String _path)
         {
-            List<string> retValue = new List<string>();
+            List<String> retValue = new List<String>();
 
             if (!Directory.Exists(_path))
                 throw new DirectoryNotFoundException("Ordner existiert nicht.");
@@ -350,9 +350,9 @@ namespace Handler.File.Text
         /// </summary>
         /// <param name="_pfad">Pfad des Ordners</param>
         /// <returns>Liste</returns>
-        public static List<string> _ListDirectories(this String _path)
+        public static List<String> _ListDirectories(this String _path)
         {
-            List<string> retValue = new List<string>();
+            List<String> retValue = new List<String>();
 
             if (!Directory.Exists(_path))
                 throw new DirectoryNotFoundException("Ordner existiert nicht.");

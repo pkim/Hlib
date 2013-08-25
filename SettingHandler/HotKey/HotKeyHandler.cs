@@ -18,10 +18,10 @@ using System.Windows.Controls;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using Handler.Item.Reflection;
+using HLib.Item.Reflection;
 
 
-namespace Handler.Settings.HotKey
+namespace HLib.Settings.HotKey
 {
     /// <summary>
     /// The HotKeyMangaer detects, if a hotkey has been pressed in the given control object 

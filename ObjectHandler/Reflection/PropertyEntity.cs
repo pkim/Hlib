@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Handler.Item.Reflection
+namespace HLib.Item.Reflection
 {
     public class PropertyEntity
     {

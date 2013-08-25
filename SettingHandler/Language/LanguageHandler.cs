@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Handler.Settings.Language;
-using Handler.Settings.Property;
+using HLib.Settings.Language;
+using HLib.Settings.Property;
 using System.IO;
 
 
-namespace Handler.Handler.Settings.Language
+namespace Handler.HLib.Settings.Language
 {
     public static class LanguageHandler<T>
         where T: Property<T>

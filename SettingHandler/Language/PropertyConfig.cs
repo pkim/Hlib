@@ -1,7 +1,7 @@
 ﻿using System;
-using Handler.Settings.Property;
+using HLib.Settings.Property;
 
-namespace Handler.Settings.Language
+namespace HLib.Settings.Language
 {
     public class PropertyConfig : Property<PropertyConfig>
     {

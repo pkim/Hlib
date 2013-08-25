@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Handler.Item.History
+namespace HLib.Item.History
 {
     public class HistoryManager<HistoryItemType>
     {

@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace Handler.Item.Reflection
+namespace HLib.Item.Reflection
 {
     public static class ReflectionHandler
     {
@@ -176,7 +176,7 @@ namespace Handler.Item.Reflection
             return GetCustomAttribute<T>(_objectItem, false);
         }
 
-        public static T GetCustomAttribute<T>(this Object _objectItem, bool _inherit)
+        public static T GetCustomAttribute<T>(this Object _objectItem, Boolean _inherit)
             where T : Attribute
         {
 
@@ -192,7 +192,7 @@ namespace Handler.Item.Reflection
             return attribute;
         }
 
-        public static T GetCustomAttribute<T>(PropertyInfo _property, bool _inherit)
+        public static T GetCustomAttribute<T>(PropertyInfo _property, Boolean _inherit)
             where T : Attribute
         {
 

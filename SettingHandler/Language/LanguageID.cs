@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Handler.Handler.Settings.Language
+namespace Handler.HLib.Settings.Language
 {
-    public enum LanguageID : int
+    public enum LanguageID
     {
         UNKNOWN = 0,
         GERMAN  = 1,

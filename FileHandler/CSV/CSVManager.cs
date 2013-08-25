@@ -5,9 +5,9 @@ using System.Text;
 using System.IO;
 using System.Reflection;
 
-using Handler.Item.Reflection;
+using HLib.Item.Reflection;
 
-namespace Handler.File.CSV
+namespace HLib.File.CSV
 {
     public class CSVManager
     {
@@ -74,7 +74,7 @@ namespace Handler.File.CSV
                         T tupel = ReflectionHandler.GetInstance<T>();
                         Type tupelType  = tupel.GetType();
 
-                        for (int i = new Int32(); i < valuesCount; i++)
+                        for (Int32 i = new Int32(); i < valuesCount; i++)
                         {
                             PropertyInfo propertyInfo = tupelType.GetProperty(properties[i].Name);
 
@@ -121,7 +121,7 @@ namespace Handler.File.CSV
                     Type tupelType = tupel.GetType();
 
                     
-                    for (int i = new Int32(); i < valuesCount; i++)
+                    for (Int32 i = new Int32(); i < valuesCount; i++)
                     {
                         PropertyInfo propertyInfo = tupelType.GetProperty(properties[i].Name);
 

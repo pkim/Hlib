@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Handler.Item.Singleton
+namespace HLib.Item.Singleton
 {
     /// <summary>
     /// SingletonBase
@@ -13,14 +10,14 @@ namespace Handler.Item.Singleton
                 where T : SingletonBase<T>
     {
 
-        public static T GetInstance(out bool New)
+        public static T GetInstance(out Boolean New)
         {
             return SingletonProvider.GetInstance<T>(out New);
         }
 
         public static T GetInstance()
         {
-            bool _Trash;
+            Boolean _Trash;
             return GetInstance(out _Trash);
         }
 

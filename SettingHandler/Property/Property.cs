@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using Handler.FileHandler;
-using Handler.Item.Singleton;
-using Handler.File.XML;
+using HLib.FileHandler;
+using HLib.Item.Singleton;
+using HLib.File.XML;
 using System.Xml.Serialization;
 using System.Threading;
 
-namespace Handler.Settings.Property
+namespace HLib.Settings.Property
 {
     /// <summary>
     /// This class is the super class of all Properties.
@@ -137,7 +137,7 @@ namespace Handler.Settings.Property
         /// </summary>
         /// <param name="New">include the information if the instance is new or not</param>
         /// <returns>the de/serialized property instance</returns>
-        private static TPropertyType GetInstance(out bool _new)
+        private static TPropertyType GetInstance(out Boolean _new)
         {
             // get the instance of the property as singelton
             Property<TPropertyType>.instance = SingletonProvider.GetInstance<TPropertyType>(out _new);
@@ -163,7 +163,7 @@ namespace Handler.Settings.Property
         /// <param name="New">include the information if the instance is new or not</param>
         /// <param name="_filePath">The path where the file of the instance is situated.</param>
         /// <returns>the de/serialized property instance</returns>
-        private static TPropertyType GetInstance(out bool New, String _filePath)
+        private static TPropertyType GetInstance(out Boolean New, String _filePath)
         {
 
             // get the instance of the property as singelton
@@ -193,7 +193,7 @@ namespace Handler.Settings.Property
         /// <returns>the de/serialized property instance</returns>
         public static TPropertyType GetInstance()
         {
-            bool _Trash;
+            Boolean _Trash;
 
             return GetInstance(out _Trash);
         }
@@ -205,7 +205,7 @@ namespace Handler.Settings.Property
         /// <returns>the de/serialized property instance</returns>
         public static TPropertyType GetInstance(String _filePath)
         {
-            bool _Trash;
+            Boolean _Trash;
 
             return GetInstance(out _Trash, _filePath);
         }

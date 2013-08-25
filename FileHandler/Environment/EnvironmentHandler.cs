@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
  
-namespace Handler.File.Environment
+namespace HLib.File.Environment
 {
     public class EnvironmentHandler
     {
@@ -33,7 +33,7 @@ namespace Handler.File.Environment
         }
 
         /// <summary>
-        /// Returns the current directory string.
+        /// Returns the current directory String.
         /// </summary>
         public static String CD
         {

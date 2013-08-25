@@ -5,16 +5,16 @@ using System.Xml.Serialization;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Handler.Handler.Item.Serialization
+namespace Handler.HLib.Item.Serialization
 {
     [Serializable()]
     public class SerializableDictionary<TKey, TVal> : Dictionary<TKey, TVal>, IXmlSerializable, ISerializable
     {
         #region Constants
-        private const string DictionaryNodeName = "Dictionary";
-        private const string ItemNodeName = "Item";
-        private const string KeyNodeName = "Key";
-        private const string ValueNodeName = "Value";
+        private const String DictionaryNodeName = "Dictionary";
+        private const String ItemNodeName = "Item";
+        private const String KeyNodeName = "Key";
+        private const String ValueNodeName = "Value";
         #endregion
         #region Constructors
         public SerializableDictionary()
@@ -31,7 +31,7 @@ namespace Handler.Handler.Item.Serialization
         {
         }
 
-        public SerializableDictionary(int capacity)
+        public SerializableDictionary(Int32 capacity)
             : base(capacity)
         {
         }
@@ -41,7 +41,7 @@ namespace Handler.Handler.Item.Serialization
         {
         }
 
-        public SerializableDictionary(int capacity, IEqualityComparer<TKey> comparer)
+        public SerializableDictionary(Int32 capacity, IEqualityComparer<TKey> comparer)
             : base(capacity, comparer)
         {
         }
@@ -51,8 +51,8 @@ namespace Handler.Handler.Item.Serialization
 
         protected SerializableDictionary(SerializationInfo info, StreamingContext context)
         {
-            int itemCount = info.GetInt32("ItemCount");
-            for (int i = new Int32(); i < itemCount; i++)
+            Int32 itemCount = info.GetInt32("ItemCount");
+            for (Int32 i = new Int32(); i < itemCount; i++)
             {
                 KeyValuePair<TKey, TVal> kvp = (KeyValuePair<TKey, TVal>)info.GetValue(String.Format("Item{0}", i), typeof(KeyValuePair<TKey, TVal>));
                 this.Add(kvp.Key, kvp.Value);
@@ -62,7 +62,7 @@ namespace Handler.Handler.Item.Serialization
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("ItemCount", this.Count);
-            int itemIdx = new Int32();
+            Int32 itemIdx = new Int32();
             foreach (KeyValuePair<TKey, TVal> kvp in this)
             {
                 info.AddValue(String.Format("Item{0}", itemIdx), kvp, typeof(KeyValuePair<TKey, TVal>));

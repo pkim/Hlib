@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Handler.Handler.Settings.Language;
-using Handler.Settings.Property;
-using Handler.Handler.Item.Serialization;
+using Handler.HLib.Settings.Language;
+using HLib.Settings.Property;
+using Handler.HLib.Item.Serialization;
 
-namespace Handler.Settings.Language
+namespace HLib.Settings.Language
 {
     public class PropertyLanguageCode : Property<PropertyLanguageCode>
     {

@@ -18,11 +18,11 @@ using NHibernate.Cfg;
 using NHibernate.Mapping.Attributes;
 using System.Reflection;
 using NHibernate.Tool.hbm2ddl;
-using NHibernate.Expression;
 using System.Collections;
+using NHibernate.Criterion;
 
 
-namespace DatabaseHandler.Hibernate
+namespace HLib.Database.Hibernate
 {
 
     /// <summary>
@@ -132,7 +132,7 @@ namespace DatabaseHandler.Hibernate
                 this.connect();
 
             SchemaExport schemaExport = new SchemaExport(this.configuration);
-            schemaExport.Execute(true, true, false, true);
+            schemaExport.Execute(true, true, true);
         }
 
     

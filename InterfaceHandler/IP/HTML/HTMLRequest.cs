@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Handler.Interface.HLib.Network.IP.HTTP;
+using HLib.Network.IP.HTTP;
 
-namespace TavianBot
+namespace HLib.Network.IP
 {
     public class HTMLRequest
     {

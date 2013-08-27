@@ -17,7 +17,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Collections;
 
-namespace Handler.Interface.HLib.Network.IP.FTP
+namespace HLib.Network.IP.FTP
 {
     public interface IFTPClient
     {

@@ -39,7 +39,7 @@ using System.Collections;
 using System.Threading;
 
 
-namespace Handler.Interface.HLib.Network.IP.FTP
+namespace HLib.Network.IP.FTP
 {
 
     /// <summary>
@@ -73,7 +73,6 @@ namespace Handler.Interface.HLib.Network.IP.FTP
         private Boolean isTransfering = true;
 
         private IPEndPoint controlIPEndPoint;
-        private IPEndPoint dataIPEndPoint;
 
         private TcpClient tcpClient;
 
@@ -221,7 +220,6 @@ namespace Handler.Interface.HLib.Network.IP.FTP
             this.BlockSize = PropertyManager.Property_FTP.BlockSize;
 
             this.controlIPEndPoint = null;
-            this.dataIPEndPoint = null;
 
             this.isConnected = false;
             this.isTransfering = false;

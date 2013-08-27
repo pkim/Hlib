@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace Handler.Interface.HLib.Network.IP.FTP
+namespace HLib.Network.IP.FTP
 {
     public struct FTPResponseMessage
     {

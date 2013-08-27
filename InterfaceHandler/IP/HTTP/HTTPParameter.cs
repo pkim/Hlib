@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Handler.Interface.HLib.Network.IP.HTTP
+namespace HLib.Network.IP.HTTP
 {
     public class HTTPParameter
     {

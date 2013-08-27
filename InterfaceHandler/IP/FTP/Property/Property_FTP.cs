@@ -8,7 +8,7 @@
 using System;
 using HLib.Settings.Property;
 
-namespace Handler.Interface.HLib.Network.IP.FTP
+namespace HLib.Network.IP.FTP
 {
     [Serializable]
     public class Property_FTP : Property<Property_FTP>

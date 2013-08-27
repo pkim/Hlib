@@ -35,7 +35,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Handler.Interface.HLib.Network.IP.FTP
+namespace HLib.Network.IP.FTP
 {
 
     /// <summary>

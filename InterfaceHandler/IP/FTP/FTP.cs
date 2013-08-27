@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Net.Sockets;
 
-namespace Handler.Interface.HLib.Network.IP.FTP
+namespace HLib.Network.IP.FTP
 {
 
     public class FTP

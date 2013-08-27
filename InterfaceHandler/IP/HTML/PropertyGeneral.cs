@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using HLib.Settings.Property;
 
-namespace Handler.Interface.HLib.Network.IP.HTML
+namespace HLib.Network.IP.HTML
 {
     public class PropertyGeneral : Property<PropertyGeneral>
     {
@@ -17,7 +14,7 @@ namespace Handler.Interface.HLib.Network.IP.HTML
 
         ~PropertyGeneral()
         {
-            this.deserialize(true);
+            this.Deserialize(true);
         }
     }
 }

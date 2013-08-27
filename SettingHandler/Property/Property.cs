@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using HLib.FileHandler;
 using HLib.Item.Singleton;
 using HLib.File.XML;
 using System.Xml.Serialization;
@@ -124,7 +119,7 @@ namespace HLib.Settings.Property
         {
             if (this.Serializeable)
             {
-                this.serialize(true);
+                this.Serialize(true);
             }
         }
         #endregion Deconstructor
@@ -135,7 +130,6 @@ namespace HLib.Settings.Property
         /// Initializes a new property instance as singelton
         /// and de/serializes ist.
         /// </summary>
-        /// <param name="New">include the information if the instance is new or not</param>
         /// <returns>the de/serialized property instance</returns>
         private static TPropertyType GetInstance(out Boolean _new)
         {
@@ -145,12 +139,12 @@ namespace HLib.Settings.Property
             // if the instance is not already serialized 
             // serialize it
             if (!System.IO.File.Exists(instance.FilePath) && Property<TPropertyType>.instance.Serializeable)
-                Property<TPropertyType>.instance.serialize();
+                Property<TPropertyType>.instance.Serialize();
 
             // If the instance is new initialized
             // deserialize it
             else if (_new && Property<TPropertyType>.instance.Deserializeable)
-                Property<TPropertyType>.instance.deserialize();
+                Property<TPropertyType>.instance.Deserialize();
 
             // return the de/serialized instance
             return Property<TPropertyType>.instance;
@@ -160,25 +154,25 @@ namespace HLib.Settings.Property
         /// Initializes a new property instance as singelton
         /// and de/serializes ist.
         /// </summary>
-        /// <param name="New">include the information if the instance is new or not</param>
+        /// <param name="_new">include the information if the instance is new or not</param>
         /// <param name="_filePath">The path where the file of the instance is situated.</param>
         /// <returns>the de/serialized property instance</returns>
-        private static TPropertyType GetInstance(out Boolean New, String _filePath)
+        private static TPropertyType GetInstance(out Boolean _new, String _filePath)
         {
 
             // get the instance of the property as singelton
-            Property<TPropertyType>.instance = SingletonProvider.GetInstance<TPropertyType>(out New);
+            Property<TPropertyType>.instance = SingletonProvider.GetInstance<TPropertyType>(out _new);
             Property<TPropertyType>.instance.FilePath = _filePath;
 
             // if the instance is not already serialized 
             // serialize it
             if (!System.IO.File.Exists(instance.FilePath) && Property<TPropertyType>.instance.Serializeable)
-                Property<TPropertyType>.instance.serialize();
+                Property<TPropertyType>.instance.Serialize();
 
             // If the instance is new initialized
             // deserialize it
-            else if (New && Property<TPropertyType>.instance.Deserializeable)
-                Property<TPropertyType>.instance.deserialize();
+            else if (_new && Property<TPropertyType>.instance.Deserializeable)
+                Property<TPropertyType>.instance.Deserialize();
 
 
             // return the de/serialized instance
@@ -193,9 +187,9 @@ namespace HLib.Settings.Property
         /// <returns>the de/serialized property instance</returns>
         public static TPropertyType GetInstance()
         {
-            Boolean _Trash;
+            Boolean trash;
 
-            return GetInstance(out _Trash);
+            return GetInstance(out trash);
         }
 
         /// <summary>
@@ -205,15 +199,15 @@ namespace HLib.Settings.Property
         /// <returns>the de/serialized property instance</returns>
         public static TPropertyType GetInstance(String _filePath)
         {
-            Boolean _Trash;
+            Boolean trash;
 
-            return GetInstance(out _Trash, _filePath);
+            return GetInstance(out trash, _filePath);
         }
 
         /// <summary>
         /// serializes the property
         /// </summary>
-        public void serialize()
+        public void Serialize()
         {
             if (!System.IO.Directory.Exists(this.outputDirectory))
             {
@@ -231,47 +225,46 @@ namespace HLib.Settings.Property
             }
         }
 
-        public void serialize(Boolean _threaded)
+        public void Serialize(Boolean _threaded)
         {
-            Thread serializeThread;
-
             if (_threaded)
             {
-                serializeThread = new Thread(new ThreadStart(this.serialize));
+                Thread serializeThread = new Thread(this.Serialize);
 
                 serializeThread.Start();
             }
 
             else
             {
-                this.serialize();
+                this.Serialize();
             }
         }
 
         /// <summary>
         /// deserilaize the property
         /// </summary>
-        public void deserialize()
+        public void Deserialize()
         {
-            if (XMLHandler.TryDeserialize(ref Property<TPropertyType>.instance, this.FilePath))
-                SingletonProvider.SetInstance<TPropertyType>(Property<TPropertyType>.instance);
+            TPropertyType propertyType = instance;
+            if (XMLHandler.TryDeserialize(ref propertyType, this.FilePath))
+                SingletonProvider.SetInstance(instance);
         }
 
-        public void deserialize(Boolean _threaded)
+        public void Deserialize(Boolean _threaded)
         {
-            Thread deserializeThread;
-
             if (_threaded)
             {
-                deserializeThread      = new Thread(new ThreadStart(this.deserialize));
-                deserializeThread.Name = String.Format("DeserializeThread_{0}", this.Name);
+                Thread deserializeThread = new Thread(this.Deserialize)
+                {
+                    Name = String.Format("DeserializeThread_{0}", this.Name)
+                };
 
                 deserializeThread.Start();
             }
 
             else
             {
-                this.deserialize();
+                this.Deserialize();
             }
         }
 

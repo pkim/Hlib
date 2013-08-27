@@ -15,8 +15,8 @@ using System.Configuration;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections;
-using Handler.Interface.HLib.Network.IP.HTTP;
-using Handler.Interface.HLib.Network.IP.HTML;
+using HLib.Network.IP.HTTP;
+using HLib.Network.IP.HTML;
 using HtmlAgilityPack;
 
 namespace HLib.Network.IP.HTML

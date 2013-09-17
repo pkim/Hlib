@@ -15,6 +15,7 @@ using System.Configuration;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections;
+using System.Web;
 using HLib.Network.IP.HTTP;
 using HLib.Network.IP.HTML;
 using HtmlAgilityPack;
@@ -171,7 +172,9 @@ namespace HLib.Network.IP.HTML
 
               using (StreamReader responseReader = new StreamReader(webResponse.GetResponseStream()))
               {
-                _htmlDocument.LoadHtml(responseReader.ReadToEnd());
+                // translates html special characters to normal ones
+                String response = HttpUtility.HtmlDecode(responseReader.ReadToEnd());
+                _htmlDocument.LoadHtml(response);
                 responseReader.Close();
               }
             }
